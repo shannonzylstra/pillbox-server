@@ -12,12 +12,7 @@ let userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    minlength: 5,
-    validate: {
-      validator: (input) => {
-        return /.*@?*\..*/.test(input)
-      }
-    }
+    minlength: 5
   },
   password: {
     type: String,
