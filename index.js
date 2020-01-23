@@ -14,7 +14,7 @@ let rowdyResults = rowdyLogger.begin(app)
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.urlencoded({ extended: false }))
-app.use(express.json({ limit: '10mb' }))
+app.use(express.json())
 
 // Routes
 app.use('/auth', expressJwt({
