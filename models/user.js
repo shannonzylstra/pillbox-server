@@ -10,6 +10,10 @@ let dogSchema = new mongoose.Schema({
   age: Number
 })
 
+// let userMedicationSchema = new mongoose.Schema({
+
+// })
+
 let userSchema = new mongoose.Schema({
   firstname: {
     type: String,
