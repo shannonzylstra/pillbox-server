@@ -25,7 +25,7 @@ app.use('/auth', expressJwt({
     { url: '/auth/signup', methods: ['POST'] }
   ]
 }), require('./controllers/auth'))
-app.use('/dogs', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/dogs'))
+app.use('/medications', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/medications'))
 
 app.get('*', (req, res) => {
   res.status(404).send({ message: 'Not Found' })
