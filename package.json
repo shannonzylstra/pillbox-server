@@ -1,7 +1,7 @@
 {
   "name": "mern-auth-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Master branch contains starter code",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +19,14 @@
     "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
     "rowdy-logger": "^1.0.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shannonzylstra/pillbox-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shannonzylstra/pillbox-server/issues"
+  },
+  "homepage": "https://github.com/shannonzylstra/pillbox-server#readme"
 }
