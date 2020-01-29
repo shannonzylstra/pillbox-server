@@ -1,18 +1,37 @@
 let bcrypt = require('bcryptjs')
 let mongoose = require('mongoose')
 
-let dogSchema = new mongoose.Schema({
+let doseSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  breed: String,
-  age: Number
+  days: {
+    type: [String],
+    required: true
+  },
+  time: {
+    type: String,
+    required: true
+  },
+  dosage: {
+    type: String,
+    required: true
+  },
+  instructions: String
 })
 
-// let userMedicationSchema = new mongoose.Schema({
-
-// })
+let userMedicationSchema = new mongoose.Schema({
+  _medication: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Medication'
+  },
+  condition: {
+    type: String,
+    required: true
+  },
+  doses: [doseSchema]
+})
 
 let userSchema = new mongoose.Schema({
   firstname: {
@@ -34,7 +53,7 @@ let userSchema = new mongoose.Schema({
     maxlength: 100
   },
   profileUrl: String,
-  dogs: [dogSchema]
+  userMedications: [userMedicationSchema]
 })
 
 // Use bcrypt to hash password
