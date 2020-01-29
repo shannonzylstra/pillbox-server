@@ -1,5 +1,5 @@
-let bcrypt = require('bcryptjs')
-let mongoose = require('mongoose')
+let bcrypt = require('bcryptjs');
+let mongoose = require('mongoose');
 
 let doseSchema = new mongoose.Schema({
   name: {
@@ -19,7 +19,7 @@ let doseSchema = new mongoose.Schema({
     required: true
   },
   instructions: String
-})
+});
 
 let userMedicationSchema = new mongoose.Schema({
   _medication: {
@@ -31,7 +31,7 @@ let userMedicationSchema = new mongoose.Schema({
     required: true
   },
   doses: [doseSchema]
-})
+});
 
 let userSchema = new mongoose.Schema({
   firstname: {
