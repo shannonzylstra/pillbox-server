@@ -25,9 +25,8 @@ medicationSchema.pre('save', function (next) {
             this.image = `/img/${str}.webp`
         }
     }
-
     next()
-})
+});
 
 medicationSchema.pre('insertMany', function (next, docs) {
     for (let i = 0; i < docs.length; i++) {
@@ -44,7 +43,6 @@ medicationSchema.pre('insertMany', function (next, docs) {
             }
         }
     }
-
     next()
 })
 
