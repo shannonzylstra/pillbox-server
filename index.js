@@ -27,7 +27,7 @@ app.use('/auth', expressJwt({
 }), require('./controllers/auth'))
 app.use('/medications', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/medications'))
 app.use('/usermedications', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/userMedications'))
-app.use('/users', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/users'))
+app.use('/user', expressJwt({ secret: process.env.JWT_SECRET }), require('./controllers/user'))
 
 app.get('*', (req, res) => {
   res.status(404).send({ message: 'Not Found' })
