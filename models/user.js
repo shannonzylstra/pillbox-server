@@ -24,8 +24,8 @@ let userSchema = new mongoose.Schema({
 })
 
 // Use bcrypt to hash password
-userSchema.pre('insertMany', function (next) {
-  if(!this.isModified()){
+userSchema.pre('save', function (next) {
+  if (this.isNew) {
     // New, as opposed to modified
     this.password = bcrypt.hashSync(this.password, 12)
   }

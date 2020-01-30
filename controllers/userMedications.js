@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    console.log(req.body)
     let condition = 'Custom Condition'
     db.UserMedication.create({
         user: req.user._id,
@@ -25,7 +26,7 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
         console.log('Error message', err)
-        res.send({ message: 'error'})
+        res.status(500).send({ message: 'error'})
     })
 })
 
