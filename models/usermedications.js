@@ -16,6 +16,7 @@ let doseSchema = new mongoose.Schema({
       type: String,
       required: true
     },
+    food: Boolean,
     instructions: String
   }, {
       timestamps: true

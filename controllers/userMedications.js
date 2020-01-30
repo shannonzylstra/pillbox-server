@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
     db.UserMedication.create({
         user: req.user._id,
         medication: req.body.medication,
-        condition: condition
+        condition: req.body.condition || condition
     })
     .then(result => {
         console.log('success', result)
@@ -41,12 +41,12 @@ router.post('/doses', (req, res) => {
                 name: req.body.name,
                 days: req.body.days || ['M','T','W','Th','F','Sa','S'],
                 dosage: req.body.dosage || '1 dose',
-                instructions: req.body.instructions || `Take ${req.body.dosage || '1 dose'} in the ${req.body.name}.`
+                instructions: req.body.instructions || `Take ${req.body.dosage || '1 dose'} in the ${req.body.name}.` // potentially make more dynamic
             })
             console.log('doses:', med.doses)
             med.save()
-            res.send('success')
         })
+        res.send('success')
     })
     .catch(err => {
         console.log('Error message', err)
