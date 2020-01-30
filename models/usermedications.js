@@ -1,12 +1,43 @@
 let mongoose = require('mongoose')
 
+let daysSchema = new mongoose.Schema({
+    M: {
+        type: Boolean,
+        default: true,
+    },
+    T: {
+        type: Boolean,
+        default: true,
+    },
+    W: {
+        type: Boolean,
+        default: true,
+    },
+    Th: {
+        type: Boolean,
+        default: true,
+    },
+    F: {
+        type: Boolean,
+        default: true,
+    },
+    Sa: {
+        type: Boolean,
+        default: true,
+    },
+    S: {
+        type: Boolean,
+        default: true,
+    }
+})
+
 let doseSchema = new mongoose.Schema({
     name: {
       type: String,
       required: true
     },
     days: {
-      type: [String],
+      type: [daysSchema],
       required: true
     },
     time: {

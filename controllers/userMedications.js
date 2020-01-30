@@ -50,7 +50,7 @@ router.post('/doses', (req, res) => {
     })
     .catch(err => {
         console.log('Error message', err)
-        res.send({ message: 'error' })
+        res.status(500).send({ message: 'error' })
     })
     // db.UserMedication.findOne({ user: req.user._id, medication: req.body.medication })
     // .then(med => {
