@@ -10,14 +10,15 @@ let doseSchema = new mongoose.Schema({
       required: true
     },
     time: {
-      type: String,
-      required: true
+      type: String
     },
     dosage: {
       type: String,
       required: true
     },
     instructions: String
+  }, {
+      timestamps: true
   })
   
   let userMedicationSchema = new mongoose.Schema({

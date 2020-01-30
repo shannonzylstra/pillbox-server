@@ -29,4 +29,48 @@ router.post('/', (req, res) => {
     })
 })
 
+router.post('/doses', (req, res) => {
+    db.UserMedication.find({ user: req.user._id, medication: req.body.medication })
+    .then(meds => {
+        meds.forEach(med => {
+            // let doses = med.doses.push(req.body.dose)
+            // UserMedication.update({ medication: med.medication }, { doses: doses })
+            // res.send('success')
+            console.log('med:', med)
+            med.doses.push({
+                name: req.body.name,
+                days: req.body.days || ['M','T','W','Th','F','Sa','S'],
+                dosage: req.body.dosage || '1 dose',
+                instructions: req.body.instructions || `Take ${req.body.dosage || '1 dose'} in the ${req.body.name}.`
+            })
+            console.log('doses:', med.doses)
+            med.save()
+            res.send('success')
+        })
+    })
+    .catch(err => {
+        console.log('Error message', err)
+        res.send({ message: 'error' })
+    })
+    // db.UserMedication.findOne({ user: req.user._id, medication: req.body.medication })
+    // .then(med => {
+    //     console.log('med:', med)
+    //     let doses = med.doses
+    //     med.doses.push({
+    //         name: req.body.name,
+    //         days: req.body.days || ['M','T','W','Th','F','Sa','S'],
+    //         dosage: req.body.dosage || '1 dose',
+    //         instructions: req.body.instructions || `Take ${req.body.dosage || '1 dose'}`
+    //     })
+    //     console.log('doses:', med.doses)
+    //     med.save()
+    //     // db.UserMedication.update({ medication: med.medication }, { doses: doses })
+    //     res.send('success')
+    // })
+    // .catch(err => {
+    //     console.log('Error message', err)
+    //     res.send({ message: 'error' })
+    // })
+})
+
 module.exports = router
