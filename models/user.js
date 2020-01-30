@@ -1,37 +1,6 @@
 let bcrypt = require('bcryptjs');
 let mongoose = require('mongoose');
 
-let doseSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  days: {
-    type: [String],
-    required: true
-  },
-  time: {
-    type: String,
-    required: true
-  },
-  dosage: {
-    type: String,
-    required: true
-  },
-  instructions: String
-});
-
-let userMedicationSchema = new mongoose.Schema({
-  _medication: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Medication'
-  },
-  condition: {
-    type: String,
-    required: true
-  },
-  doses: [doseSchema]
-});
 
 let userSchema = new mongoose.Schema({
   firstname: {
@@ -52,13 +21,12 @@ let userSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 100
   },
-  profileUrl: String,
-  userMedications: [userMedicationSchema]
+  profileUrl: String
 })
 
 // Use bcrypt to hash password
-userSchema.pre('insertMany', function (next) {
-  if(!this.isModified()){
+userSchema.pre('save', function (next) {
+  if (this.isNew) {
     // New, as opposed to modified
     this.password = bcrypt.hashSync(this.password, 12)
   }

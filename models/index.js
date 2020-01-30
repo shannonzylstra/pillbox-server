@@ -18,3 +18,4 @@ db.on('error', function(err) {
 
 module.exports.User = require('./user')
 module.exports.Medication = require('./medication')
+module.exports.UserMedication = require('./usermedications')
