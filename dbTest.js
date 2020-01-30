@@ -104,7 +104,7 @@ let medications = [
        brand: 'Mevacor',
        generic: 'lovastatin',
        image: '/img/mevacor.JPG'
-   }
+   },
    {
        brand: 'Micronase',
        generic: 'glyburide',
@@ -257,7 +257,7 @@ let medications = [
    }
 ]
 
-db.Medication.insertMany(medications)
+db.Medication.insertMany(medications.slice(medications.length-1, medications.length))
 .then( () => {
     console.log('hit then after insertMany')
     process.exit()
