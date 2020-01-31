@@ -3,6 +3,7 @@ let router = require('express').Router()
 
 router.get('/', (req, res) => {
     db.UserMedication.find({ user: req.user._id})
+    .populate('medication')
     .then(usermedications => {
         // Promise<T>
         // String -> ()
@@ -12,29 +13,30 @@ router.get('/', (req, res) => {
         // userMedicationPromises :: [Promise<()>]
         // Promises.all(userMedicationPromises) :: Promise<[()]>
 
-        let userMedicationPromises = []
-        usermedications.forEach(usermedication => {
-            userMedicationPromises.push(db.Medication.findOne({ _id: usermedication.medication })
-                .then(medication => {
-                    let med = {
-                        medication: usermedication.medication,
-                        brand: medication.brand,
-                        generic: medication.generic,
-                        info: medication.info,
-                        image: medication.image,
-                        condition: usermedication.condition,
-                        doses: usermedication.doses
-                    } 
-                    // { medication, usermedication }
-                    return med
-                })
-            )
-        })
-        Promise.all(userMedicationPromises)
-        .then(results => {
-            res.send({ usermedications: results })
-        })
-        // res.send({ usermedications })
+        // let userMedicationPromises = []
+        // usermedications.forEach(usermedication => {
+        //     userMedicationPromises.push(db.Medication.findOne({ _id: usermedication.medication })
+        //         .then(medication => {
+        //             let med = {
+        //                 medication: usermedication.medication,
+        //                 brand: medication.brand,
+        //                 generic: medication.generic,
+        //                 info: medication.info,
+        //                 image: medication.image,
+        //                 condition: usermedication.condition,
+        //                 doses: usermedication.doses
+        //             } 
+        //             // { medication, usermedication }
+        //             return med
+        //         })
+        //     )
+        // })
+        // Promise.all(userMedicationPromises)
+        // .then(results => {
+        //     res.send({ usermedications: results })
+        // })
+
+        res.send({ usermedications })
     })
     .catch(err => {
         console.log('Error in GET /usermedications', err)
