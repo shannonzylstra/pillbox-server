@@ -4,7 +4,8 @@
   "description": "Master branch contains starter code",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": ""
   },
   "keywords": [],
   "author": "",
@@ -28,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/shannonzylstra/pillbox-server/issues"
   },
-  "homepage": "https://github.com/shannonzylstra/pillbox-server#readme"
+  "homepage": "https://github.com/shannonzylstra/pillbox-server#readme",
+  "engines": {
+	"node": "v13.3.0"
+  }
 }
